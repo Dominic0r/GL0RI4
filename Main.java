@@ -242,6 +242,8 @@ System.out.flush();
                 break;
             default: opposition+=2;
             support +=10;
+            victory--;
+            senate--;
         }
         checkLimits();
         
@@ -277,9 +279,9 @@ System.out.flush();
             senate -=1;
                 break;
             case 2: victory +=1;
-            opposition +=3;
+            opposition +=2;
             senate +=2;
-            support -=3;
+            support -=2;
                 break;
             default: 
             victory +=1;
@@ -341,7 +343,14 @@ System.out.flush();
         boolean garci = false;
         
         System.out.println("\nLessons learned from the midterms");
-        System.out.println("After the... less than ideal results of the midterm elections, your inner circle has suggested to you to make friends in COMELEC in preparation for 2004.");
+        if(senate <12){
+            System.out.println("After the... less than ideal results of the midterm elections, your inner circle has suggested to you to make friends in COMELEC in preparation for 2004.");
+        }else if(senate >=12 && senate <20){
+            System.out.println("After the acceptable results of the midterm elections, your inner circle has suggested to you to make friends in COMELEC in preparation for 2004.");
+        }else{
+            System.out.println("After the fantastic results of the midterm elections, your inner circle has suggested to you to make friends in COMELEC in preparation for 2004.");
+        }
+        
         System.out.println("1- We need to focus on reforms, my policy, and stability. Not elections.");
         System.out.println("2- I'll admit, we need reliable officials. But don't go too overboard with the appointments, alright?");
         System.out.println("3- Secure all levels of the process. And get me a contact on top.");
@@ -463,26 +472,35 @@ System.out.flush();
         }
         checkLimits();
         
-        System.out.println("Being one of an economic background, you have chosen the economy as your primary focus of policy. There's currently an economic reform bill being pushed in the Senate that aligns with your policy. Passing it would be very beneficial for you, at a cost.");
+        System.out.println("One of your key policy bills has passed the House and is now going through the senate.");
         System.out.println("1-Pull all the strings we got to get this on my desk.");
         System.out.println("2-Let the chips fall where they may");
         System.out.println("3-Oppose the bill to rally support");
+        System.out.println("4-Skip it, Ill pas it through an executive order");
         int ecochance1 = ra.nextInt(24);
         switch(sc.nextInt()){
             case 1: policy +=(senate >=12)? 5:0;
             support -=(senate >=12)?  5:0;
-            senate -=(senate >=12)? 5:0;
+            senate -=(senate >=12)? 3:0;
             opposition+=(senate >=12)? 2:0;
                 break;
             case 2:policy += (ecochance1 < senate)? 2:0;
             support += (ecochance1<senate)? -2:0;
             opposition += (ecochance1<senate)? 1:0;
                 break;
-            default: 
+            case 3: 
             policy-=2;
             senate-=2;
             support +=5;
+            break;
+            default:
+            policy += 5;
+            support -= 10;
+            opposition+=10;
+            senate -=5;
         }
+        
+        
         checkLimits();
         
         // ev 8
@@ -566,21 +584,28 @@ System.out.flush();
         System.out.println("1-Pull all the strings we got to get this on my desk.");
         System.out.println("2-Let the chips fall where they may");
         System.out.println("3-Oppose the bill to rally support");
+        System.out.println("4-Pass it through an executive order");
         int ecochance2 = ra.nextInt(24);
         switch(sc.nextInt()){
             case 1: policy +=(senate >=12)? 5:0;
             support -=(senate >=12)?  5:0;
-            senate -=(senate >=12)? 5:0;
+            senate -=(senate >=12)? 3:0;
             opposition+=(senate >=12)? 2:0;
                 break;
             case 2:policy += (ecochance1 < senate)? 2:0;
             support += (ecochance1<senate)? -2:0;
-            opposition += (ecochance1<senate)? 1:0;
+            opposition -= (ecochance1<senate)? 1:0;
                 break;
-            default: 
+            case 3: 
             policy-=2;
             senate-=2;
             support +=5;
+            break;
+            default:
+            policy +=5;
+            support -=10;
+            opposition+=10;
+            senate-=10;
         }
         checkLimits();
         
