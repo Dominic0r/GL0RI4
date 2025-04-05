@@ -242,7 +242,7 @@ System.out.flush();
         }else if(victory <=5 && victory>2){
             System.out.println("You have "+BLUE+"some"+RESET+" victories");
         } else if (victory <=2){
-            if(victory ==0){
+            if(victory >0){
                 System.out.println("You have "+YELLOW+"little"+RESET+" victories");
             }else{
                 System.out.println("You have "+RED+"no"+RESET+" victories");
