@@ -7,6 +7,14 @@ public class Main
     public static int victory = 0;
     public static int senate = 21;
     public static int opposition = 0;
+    public static int vpid = 0;
+    
+    public static final String RESET = "\u001B[0m";
+    public static final String RED = "\u001B[31m";
+    public static final String GREEN = "\u001B[32m";
+    public static final String YELLOW = "\u001B[33m";
+    public static final String BLUE = "\u001B[34m";
+    
     
     public static int support = 0;
     public static boolean isFinished = false;
@@ -28,6 +36,8 @@ public class Main
     public static int opscore=0, yourscore=0, otherscore=0;
     
     public static boolean isElection = false;
+    
+    public static String[] vps = {"De Castro", "Villar", "Zubiri"};
     
     public static void detWin(int ypercentf,int oppercentf,int otpercentf){
         if(ypercentf > oppercentf && ypercentf >otpercentf){
@@ -167,6 +177,11 @@ df.setMaximumFractionDigits(0);
         System.out.println("Gloria Macapagal Arroyo: " + df.format(yourvotes) +" ("+ yourpercent_final+"%)");
         System.out.println(mainOpponent+": " + df.format(oppovotes)+ " ("+ oppercent_final+"%)");
         System.out.println("Other: " + df.format(othervotes)+ " ("+ otherpercent_final+"%)");
+        System.out.println("\n==================================================");
+        System.out.println("                Arroyo-"+vps[vpid]);
+        System.out.println("==================================================\n");
+        
+        
         if(isFinished){
             voteCount((int)yourvotes,(int) oppovotes, (int)othervotes);
         }
@@ -216,16 +231,21 @@ System.out.flush();
             support = -50;
         }
         
-        System.out.println("\nVictory Points: " + victory);
+        System.out.println("==================================================");
+        System.out.println("==                    GL0RI4                    ==");
+        System.out.println("==================================================\n");
+        
+        System.out.println("Stats: \n");
+        
         if(victory>5){
-            System.out.println("You have plenty of victories");
+            System.out.println("You have "+GREEN+"plenty"+RESET+" of victories");
         }else if(victory <=5 && victory>2){
-            System.out.println("You have some victories");
+            System.out.println("You have "+BLUE+"some"+RESET+" victories");
         } else if (victory <=2){
             if(victory ==0){
-                System.out.println("You have little victories");
+                System.out.println("You have "+YELLOW+"little"+RESET+" victories");
             }else{
-                System.out.println("You have no victories");
+                System.out.println("You have "+RED+"no"+RESET+" victories");
             }
                 
         }
@@ -233,75 +253,87 @@ System.out.flush();
         
         
         if(opposition>12){
-                    System.out.println("The opposition is strong");
+                    System.out.println("The opposition is "+RED+"strong"+RESET);
                 }else if(opposition <=12 && opposition >6){
-                    System.out.println("The opposition is manageable");
+                    System.out.println("The opposition is "+YELLOW+"getting stronger"+RESET);
                 }else if(opposition <=6){
                     if(opposition >3){
-                        System.out.println("The opposition is organizing");
+                        System.out.println("The opposition is "+BLUE+"manageable"+RESET);
                     }else{
-                        System.out.println("The opposition is weak");
+                        System.out.println("The opposition is "+GREEN+"weak"+RESET);
                     }
                 }
         //policy max 21
-        
+        //System.out.println(policy);
         if(policy > 14){
-            System.out.println("Policy implementation is strong");
+            System.out.println("Policy implementation is "+GREEN+"strong"+RESET);
         }else if(policy > 7 && policy<= 14){
-            System.out.println("Policy implementation is acceptable");
+            System.out.println("Policy implementation is "+BLUE+"acceptable"+RESET);
         }else if(policy <=7){
             if(policy >0){
-                System.out.println("Policy implementation is non-existent");
+                System.out.println("Policy implementation is "+YELLOW+"weak"+RESET);
             }else{
-                System.out.println("Policy implementation is weak");
+                System.out.println("Policy implementation is "+RED+"non-existent"+RESET);
             }
         }
         
         if(support+50 > 50){
             if(support+50 >75){
-                System.out.println("Public approval is high");
+                System.out.println("Public approval is "+GREEN+"high"+RESET);
             }else{
-                System.out.println("Public approval is moderately high");
+                System.out.println("Public approval is "+BLUE+"moderately high"+RESET);
             }
         }else{
             if(support+50 >25){
-                System.out.println("Public approval is moderately low");
+                System.out.println("Public approval is "+YELLOW+"moderately low"+RESET);
             }else{
-                System.out.println("Public approval is low");
+                System.out.println("Public approval is "+RED+"low"+RESET);
             }
         }
-        
-        
         
         
         if(senate >12){
             if(senate > 18){
                 if(senate == 24){
-                    System.out.println("You are the Senate");
+                    System.out.println("\u001B[36mYou are the Senate"+RESET);
                 }else{
-                    System.out.println("The Senate overwhelmingly supports you");
+                    System.out.println("The Senate "+GREEN+"overwhelmingly"+RESET+" supports you");
                 }
             }else{
-                System.out.println("The Senate supports you");
+                System.out.println("The Senate "+BLUE+"supports"+RESET+" you");
             }
         }else{
             if(senate >6){
-                System.out.println("The Senate opposes you");
+                System.out.println("The Senate "+YELLOW+"opposes"+RESET+" you");
             }else{
                 if(senate >0){
-                    System.out.println("The Senate overwhelmingly opposes you");
+                    System.out.println("The Senate "+RED+"overwhelmingly"+RESET+" opposes you");
                 }else{
-                    System.out.println("What have you done?");
+                    System.out.println("\u001B[35mWhat have you done?"+RESET);
                 }
             }
         }
+        System.out.println("\n==================================================\n");
+    
+        
     }
+    
+    
     
 	public static void main(String[] args) {
 	    Random ra = new Random();
 	    Scanner sc = new Scanner(System.in);
 		int uput = 0;
-		// ev 0
+		// ev -1
+		System.out.println("\n==================================================");
+        System.out.println("==                    GL0RI4                    ==");
+        System.out.println("==================================================\n");
+        System.out.println("Press Enter to Start");
+        Scanner strt = new Scanner(System.in);
+        strt.nextLine();
+        checkLimits();
+        
+        //ev 0
 		System.out.println("We've done it. We've succesfully ousted a corrupt government and installed ourselves in power. You step up on the stage and prepare to address the massive crowds that have gathered in your support");
         System.out.println("1-It's so important that I make a unifying speech. After what we had just gone through, let's try and unite the nation");
         System.out.println("2-I'd like to thank those in congress and those in Estrada's cabinet who have been so brave to step out and come to my support.");
@@ -339,7 +371,7 @@ System.out.flush();
         }
         checkLimits();
         
-        System.out.println("\nMILF Peace Talks");
+        System.out.println("MILF Peace Talks");
         System.out.println("The Moro Islamic Liberation Front, an islamist separatist insurgent group in Mindanao have agreed to peace talks with the government. How should we conduct ourselves in the peace talks?");
         System.out.println("1-Send in military representatives, don't make any concessions");
         System.out.println("2-I'll go there myself with an entourage of diplomats and senators to make a balanced deal");
@@ -380,7 +412,7 @@ System.out.flush();
         }
         checkLimits();
         // ev 3
-        System.out.println("\nThe midterms are coming in a few weeks. Who should we campaign with?");
+        System.out.println("The midterms are coming in a few weeks. Who should we campaign with?");
         System.out.println("1-Let's campaign with liberal figures like Francis Pangilinan, really capture that liberal vote");
         System.out.println("2-Let's campaign with our political allies like Villar, gain favor in the senate");
         switch(sc.nextInt()){
@@ -412,7 +444,7 @@ System.out.flush();
         checkLimits();
         boolean garci = false;
         
-        System.out.println("\nLessons learned from the midterms");
+        System.out.println("Lessons learned from the midterms");
         if(senate <12){
             System.out.println("After the... less than ideal results of the midterm elections, your inner circle has suggested to you to make friends in COMELEC in preparation for 2004.");
         }else if(senate >=12 && senate <20){
@@ -451,7 +483,7 @@ System.out.flush();
         }
         
         // ev 4
-        System.out.println("\nDos Palmas Kidnappings");
+        System.out.println("Dos Palmas Kidnappings");
         System.out.println("One to twenty local and foreign people in the Dos Palmas hotel were kidnapped by Abu Sayyaf");
         System.out.println("1-Respond with considerable military action");
         System.out.println("2-Attempt to communicate with Abu Sayyaf and negotiate a deal");
@@ -476,7 +508,7 @@ System.out.flush();
         }
         checkLimits();
         // ev 5
-        System.out.println("\nCombatting Communist Insurgency");
+        System.out.println("Combatting Communist Insurgency");
         System.out.println("The NPA, despite being heavily weakened in the past few years, are still waging guerilla war against the government.");
         System.out.println("1-Crush the insurgency using military force via Oplan Bantay Laya");
         System.out.println("2-Reach out to the civilian population via outreach and aid programs");
@@ -496,7 +528,7 @@ System.out.flush();
         }
         checkLimits();
         // ev 6
-        System.out.println("\nLast year, the United States was attacked by Islamist terrorists in what is now being called the 9/11 Attacks. While we've already made a condolence message last year, we can take advantage of this by promoting our local counter-terrorism campaign to the public");
+        System.out.println("Last year, the United States was attacked by Islamist terrorists in what is now being called the 9/11 Attacks. While we've already made a condolence message last year, we can take advantage of this by promoting our local counter-terrorism campaign to the public");
         System.out.println("1-It's best not to use this to shore up support");
         System.out.println("2-Write me a quick speech talking about the dangers of terrorism and how we're combatting it");
         switch(sc.nextInt()){
@@ -509,7 +541,7 @@ System.out.flush();
         }
         checkLimits();
         // ev 7
-        System.out.println("\nThe annual Balikatan exercises have just concluded, and our troops have gotten a lot of experience and training from the US. We could really put this experience to use in combatting Abu Sayyaf");
+        System.out.println("The annual Balikatan exercises have just concluded, and our troops have gotten a lot of experience and training from the US. We could really put this experience to use in combatting Abu Sayyaf");
         System.out.println("1-Let's focus our efforts on directly combatting these terrorists");
         System.out.println("2-How about we try to infiltrate this organization and kill it from within?");
         System.out.println("3-No, let's try to negotiate a ceasefire with Abu Sayyaf. Surely they're much more intimidated now");
@@ -561,7 +593,7 @@ System.out.flush();
         checkLimits();
         
         // ev 8
-        System.out.println("\nIt's a beautiful afternoon, Rizal Day celebrations are about to conlude and you are to make a speech");
+        System.out.println("It's a beautiful afternoon, Rizal Day celebrations are about to conlude and you are to make a speech");
         System.out.println("1-Let's focus this speech on unity. It's very important in stabilizing this nation");
         System.out.println("2-I'll shore up support by pledging to not run in 2004. Surely changing my mind next year won't cause too much uproar, right?");
         switch(sc.nextInt()){
@@ -581,7 +613,7 @@ System.out.flush();
         }
         checkLimits();
         // ev 9
-        System.out.println("\nTerrorists have just detonated a bomb inside Davao Airport. On your way there, you prepare your statement");
+        System.out.println("Terrorists have just detonated a bomb inside Davao Airport. On your way there, you prepare your statement");
         System.out.println("1-I'll send my condolences to the victims. Make me look sympathetic and all that");
         System.out.println("2-Let's use this event to emphasize the need for more counterterrorism operations");
         switch(sc.nextInt()){
@@ -617,7 +649,7 @@ System.out.flush();
         checkLimits();
         
         // ev 10
-        System.out.println("\nUS President George Bush has just approached you, asking if you'd be interested in joining a joint coalition to invade Iraq.");
+        System.out.println("US President George Bush has just approached you, asking if you'd be interested in joining a joint coalition to invade Iraq.");
         System.out.println("1-This will be beneficial to me and make me look like a strong leader. Send a couple of our soldiers out there to participate");
         System.out.println("2-I refuse to send troops to fight in a war with flimsy justifications.");
         switch(sc.nextInt()){
@@ -687,7 +719,7 @@ System.out.flush();
             policy+=-2;
         }
         checkLimits();
-        int vpid = 0;
+        
         System.out.println("Choose your Running Mate");
         System.out.println("1-We need someone who's popular with the people and wasn't in my coalition in 2001 to form a sort of unity ticket...");
         System.out.println("2-I'll call a good friend in the senate, someone I can trust to be my deputy...");
