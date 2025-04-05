@@ -237,12 +237,10 @@ System.out.flush();
             support +=5;
                 break;
             case 2: senate++;
-            opposition+=1;
             support +=3;
                 break;
-            default: opposition+=2;
+            default: opposition++;
             support +=10;
-            victory--;
             senate--;
         }
         checkLimits();
@@ -254,14 +252,13 @@ System.out.flush();
         System.out.println("3-It was obviously the fault of the past two administrations who invited IMPSA to our country");
         switch(sc.nextInt()){
             case 1: senate -= 3;
-            support +=1;
+            support +=3;
                 break;
-            case 2: opposition += 1;
+            case 2:
             support -=3;
                 break;
             default: 
-            victory-=1;
-            opposition +=2;
+            opposition ++;
             senate-=2;
             support -=5;
                     
@@ -274,17 +271,16 @@ System.out.flush();
         System.out.println("2-I'll go there myself with an entourage of diplomats and senators to make a balanced deal");
         System.out.println("3-Delegate the talks to local representatives of the area and experts on the matter, be pragmatic with the concessions");
         switch(sc.nextInt()){
-            case 1: victory -=1;
-            opposition+=2;
+            case 1:
+            opposition++;
             senate -=1;
                 break;
-            case 2: victory +=1;
-            opposition +=2;
+            case 2:
             senate +=2;
             support -=2;
                 break;
             default: 
-            victory +=1;
+            victory ++;
             senate -= 3;
             support += 5;
         }
@@ -296,14 +292,14 @@ System.out.flush();
         System.out.println("2-Responding harshly will just make us look bad. Let's increase security and deploy a couple units to the scene, but only to keep order.");
         System.out.println("3-Let's allow them to protest, no additional security or anything. Just keep the cameras pointed at them.");
         switch(sc.nextInt()){
-            case 1: victory -=1;
-            opposition +=2;
+            case 1: 
+            opposition ++;
             support -=5;
                 break;
-            case 2: victory+=1;
-            opposition+=1;
+            case 2:
+                support +=1;
                 break;
-            default: victory+=2;
+            default: victory++;
             support +=3;
             senate -=2;
                     
@@ -314,7 +310,7 @@ System.out.flush();
         System.out.println("1-Let's campaign with liberal figures like Francis Pangilinan, really capture that liberal vote");
         System.out.println("2-Let's campaign with our political allies like Villar, gain favor in the senate");
         switch(sc.nextInt()){
-            case 1: opposition+=1;
+            case 1:
             senate-=1;
             support +=2;
                 break;
@@ -359,19 +355,17 @@ System.out.flush();
                 policy +=3;
                 break;
             case 2:
-                support += 3;
-                opposition +=1;
+                support +=3;
                 break;
             default:
                 garci = true;
                 support +=5;
-                opposition+=2;
+                opposition++;
                 senate -=1;
         }
         checkLimits();
         if(senate >=18){
             policy+=2;
-            opposition -=1;
         } else if (senate >=12 && senate < 18){
             policy+=1;
         } else if (senate >=6 && senate < 12){
@@ -384,31 +378,27 @@ System.out.flush();
         
         // ev 4
         System.out.println("\nDos Palmas Kidnappings");
-        System.out.println("1 to 20 local and foreign people in the Dos Palmas hotel were kidnapped by Abu Sayyaf");
+        System.out.println("One to twenty local and foreign people in the Dos Palmas hotel were kidnapped by Abu Sayyaf");
         System.out.println("1-Respond with considerable military action");
         System.out.println("2-Attempt to communicate with Abu Sayyaf and negotiate a deal");
         switch(sc.nextInt()){
-            case 1: victory -=2;
-            opposition+=1;
+            case 1: 
+            
             senate-=2;
             support +=3;
                 break;
             default: 
-            victory-=1;
-            opposition+=2;
+            opposition++;
             support -=3;
         }
         if(senate >=18){
             policy+=2;
-            opposition -=1;
         } else if (senate >=12 && senate < 18){
             policy+=1;
         } else if (senate >=6 && senate < 12){
             policy+=-1;
-            opposition+=1;
         } else if (senate < 6){
             policy+=-2;
-            opposition+=2;
         }
         checkLimits();
         // ev 5
@@ -418,17 +408,14 @@ System.out.flush();
         System.out.println("2-Reach out to the civilian population via outreach and aid programs");
         System.out.println("3-Attempt to negotiate a ceasefire with the NPA");
         switch(sc.nextInt()){
-            case 1: victory -=1;
-            opposition+=2;
+            case 1: 
             support -=3;
                 break;
-            case 2: victory+=1;
-            opposition-=1;
+            case 2: victory++;
             support +=5;
                 break;
             default: 
-            victory-=2;
-            opposition+=1;
+            opposition++;
             senate-=5;
             support -=5;
                     
@@ -440,10 +427,10 @@ System.out.flush();
         System.out.println("2-Write me a quick speech talking about the dangers of terrorism and how we're combatting it");
         switch(sc.nextInt()){
             case 1:
-                
+                senate--;
                 break;
             default: 
-            opposition+=1;
+            opposition++;
             support +=2;
         }
         checkLimits();
@@ -454,19 +441,17 @@ System.out.flush();
         System.out.println("3-No, let's try to negotiate a ceasefire with Abu Sayyaf. Surely they're much more intimidated now");
         int chansa = ra.nextInt(10);
         switch(sc.nextInt()){
-            case 1: victory += (chansa <5)? 2:-1;
-            opposition += (chansa < 5)? -2:1;
-            senate += (chansa <5)? 2:0;
-            support +=(chansa <5)? 2:-2 ;
+            case 1: 
+            senate += (chansa <6)? 2:0;
+            support +=(chansa <6)? 2:-2 ;
                 break;
-            case 2:victory += (chansa <4)? 3:-2;
-            opposition += (chansa < 4)? -3:2;
+            case 2:victory += (chansa <4)? 1:0;
+            opposition += (chansa < 4)? 0:1;
             senate += (chansa <4)? 3:-2;
             support +=(chansa <4)? 5:-5 ;
                 break;
             default: 
-            victory-=3;
-            opposition+=2;
+            opposition++;
             senate-=3;
             support -=7;
         }
@@ -482,11 +467,9 @@ System.out.flush();
             case 1: policy +=(senate >=12)? 5:0;
             support -=(senate >=12)?  5:0;
             senate -=(senate >=12)? 3:0;
-            opposition+=(senate >=12)? 2:0;
                 break;
             case 2:policy += (ecochance1 < senate)? 2:0;
             support += (ecochance1<senate)? -2:0;
-            opposition += (ecochance1<senate)? 1:0;
                 break;
             case 3: 
             policy-=2;
@@ -496,7 +479,7 @@ System.out.flush();
             default:
             policy += 5;
             support -= 10;
-            opposition+=10;
+            opposition++;
             senate -=5;
         }
         
@@ -509,23 +492,18 @@ System.out.flush();
         System.out.println("2-I'll shore up support by pledging to not run in 2004. Surely changing my mind next year won't cause too much uproar, right?");
         switch(sc.nextInt()){
             case 1:support +=5;
-            victory -=1;
                 break; 
             default:senate -=1;
-            opposition-=2;
             support -=10;
         }
         if(senate >=18){
             policy+=2;
-            opposition -=1;
         } else if (senate >=12 && senate < 18){
             policy+=1;
         } else if (senate >=6 && senate < 12){
             policy+=-1;
-            opposition+=1;
         } else if (senate < 6){
             policy+=-2;
-            opposition+=2;
         }
         checkLimits();
         // ev 9
@@ -533,12 +511,12 @@ System.out.flush();
         System.out.println("1-I'll send my condolences to the victims. Make me look sympathetic and all that");
         System.out.println("2-Let's use this event to emphasize the need for more counterterrorism operations");
         switch(sc.nextInt()){
-            case 1: victory +=1;
+            case 1: 
             support +=5;
                 break;
-            default: victory -=1;
+            default: 
             senate+=2;
-            opposition+=1;
+            opposition++;
             support +=1;
         }
         checkLimits();
@@ -549,17 +527,16 @@ System.out.flush();
         System.out.println("2-This is nothing but an attempt by a disgruntled faction of the military to assert its power and gain influence in the government. Send in soldiers to blockade them but don't engage first");
         System.out.println("3-Go on TV and address the rebels' accusations. Depict ourselves as the more reasonable ones.");
         switch(sc.nextInt()){
-            case 1: victory -=2;
-            opposition +=2;
+            case 1:
+            opposition ++;
             support -=5;
             senate -=2;
                 break;
-            case 2: victory +=1;
-            opposition +=1;
+            case 2: victory ++;
+            opposition ++;
             support -=2;
                 break;
-            default: victory -=1;
-            opposition -=1;
+            default:
             senate -=1;
             support +=2;
         }
@@ -571,11 +548,10 @@ System.out.flush();
         System.out.println("2-I refuse to send troops to fight in a war with flimsy justifications.");
         switch(sc.nextInt()){
             case 1: senate +=3;
-            opposition+=2;
+            opposition++;
             support -=5;
                 break;
             default: senate -=5;
-            opposition-=1;
             support +=5;
         }
         checkLimits();
@@ -590,11 +566,9 @@ System.out.flush();
             case 1: policy +=(senate >=12)? 5:0;
             support -=(senate >=12)?  5:0;
             senate -=(senate >=12)? 3:0;
-            opposition+=(senate >=12)? 2:0;
                 break;
             case 2:policy += (ecochance1 < senate)? 2:0;
             support += (ecochance1<senate)? -2:0;
-            opposition -= (ecochance1<senate)? 1:0;
                 break;
             case 3: 
             policy-=2;
@@ -604,7 +578,7 @@ System.out.flush();
             default:
             policy +=5;
             support -=10;
-            opposition+=10;
+            opposition+=1;
             senate-=10;
         }
         checkLimits();
@@ -615,15 +589,14 @@ System.out.flush();
         System.out.println("2-They wanna investigate? Fine, I'll let them investigate.");
         System.out.println("3-This is clearly just an attempt by the opposition to unermine my administration. Ready me a speech, I'll put these guys on blast.");
         switch(sc.nextInt()){
-            case 1: opposition+=1;
+            case 1:
             support -=2;
                 break;
-            case 2: opposition -=1;
+            case 2:
             senate -=1;
-            victory-=1;
                 break;
             default: 
-            opposition+=2;
+            opposition++;
             senate -=2;
             support -=5;
                     
@@ -631,16 +604,13 @@ System.out.flush();
         checkLimits();
         if(senate >=18){
             policy+=2;
-            opposition -=1;
         } else if (senate >=12 && senate < 18){
             policy+=1;
             
         } else if (senate >=6 && senate < 12){
             policy+=-1;
-            opposition+=1;
         } else if (senate < 6){
             policy+=-2;
-            opposition+=2;
         }
         checkLimits();
         int vpid = 0;
@@ -653,12 +623,11 @@ System.out.flush();
                 support +=5;
                 senate -=1;
                 vpid = 0;
-                opposition -=5;
                 break;
             case 2:
                 support +=3;
                 senate += 2;
-                opposition+=5;
+                opposition++;
                 vpid = 1;
                 break;
             default: 
@@ -671,55 +640,56 @@ System.out.flush();
         System.out.println("1-At it again? Write me a speech, let's head to the senate and call these guys out for what they're really doing");
         System.out.println("2-Just ignore it, they're just trying to stir up old drama before the election");
         switch(sc.nextInt()){
-            case 1: opposition +=1;
-            victory+=1;
+            case 1:
             support -=2;
                 break;
             default: 
-            victory-=1;
+            victory++;
             support -=5;
         }
         checkLimits();
         
         //victory += senate/6;
-        victory += policy/10;
+        //victory += policy/10;
         
         
-        
+        // victory min 0, max 7
         int vicid = 0;
-        if(victory>3){
+        if(victory>5){
             vicid = 2;
-        }else if(victory <=3 && victory>-5){
+        }else if(victory <=5 && victory>2){
             vicid = 1;
-        } else if (victory <=-5){
+        } else if (victory <=2){
             vicid = 0;
         }
+        //oppo min 0, max 18
+        
         int oppID = 0;
         switch(vicid){
             case 0:
-                if(opposition>9){
+                if(opposition>12){
                     oppID = 2;
-                }else if(opposition <=9 && opposition >1){
+                }else if(opposition <=12 && opposition >6){
                     oppID = 1;
-                }else if(opposition <=1){
+                }else if(opposition <=6){
                     oppID = 0;
                 }
                 break;
             case 1:
-                if(opposition>9){
+                if(opposition>12){
                     oppID = 5;
-                }else if(opposition <=9 && opposition >1){
+                }else if(opposition <=12 && opposition >6){
                     oppID = 4;
-                }else if(opposition <=1){
+                }else if(opposition <=6){
                     oppID = 3;
                 }
                 break;
             case 2:
-            if(opposition>9){
+            if(opposition>12){
                     oppID = 8;
-                }else if(opposition <=9 && opposition >1){
+                }else if(opposition <=12 && opposition >6){
                     oppID = 7;
-                }else if(opposition <=1){
+                }else if(opposition <=6){
                     oppID = 6;
                 }
         }
