@@ -217,10 +217,84 @@ System.out.flush();
         }
         
         System.out.println("\nVictory Points: " + victory);
-        System.out.println("Opposition Level: " + opposition);
-        System.out.println("Policy Implementation: " + policy);
-        System.out.println("Popularity: " + (support+50));
-        System.out.println("Senate Support: " + senate+"\n");
+        if(victory>5){
+            System.out.println("You have plenty of victories");
+        }else if(victory <=5 && victory>2){
+            System.out.println("You have some victories");
+        } else if (victory <=2){
+            if(victory ==0){
+                System.out.println("You have little victories");
+            }else{
+                System.out.println("You have no victories");
+            }
+                
+        }
+        
+        
+        
+        if(opposition>12){
+                    System.out.println("The opposition is strong");
+                }else if(opposition <=12 && opposition >6){
+                    System.out.println("The opposition is manageable");
+                }else if(opposition <=6){
+                    if(opposition >3){
+                        System.out.println("The opposition is organizing");
+                    }else{
+                        System.out.println("The opposition is weak");
+                    }
+                }
+        //policy max 21
+        
+        if(policy > 14){
+            System.out.println("Policy implementation is strong");
+        }else if(policy > 7 && policy<= 14){
+            System.out.println("Policy implementation is acceptable");
+        }else if(policy <=7){
+            if(policy >0){
+                System.out.println("Policy implementation is non-existent");
+            }else{
+                System.out.println("Policy implementation is weak");
+            }
+        }
+        
+        if(support+50 > 50){
+            if(support+50 >75){
+                System.out.println("Public approval is high");
+            }else{
+                System.out.println("Public approval is moderately high");
+            }
+        }else{
+            if(support+50 >25){
+                System.out.println("Public approval is moderately low");
+            }else{
+                System.out.println("Public approval is low");
+            }
+        }
+        
+        
+        
+        
+        if(senate >12){
+            if(senate > 18){
+                if(senate == 24){
+                    System.out.println("You are the Senate");
+                }else{
+                    System.out.println("The Senate overwhelmingly supports you");
+                }
+            }else{
+                System.out.println("The Senate supports you");
+            }
+        }else{
+            if(senate >6){
+                System.out.println("The Senate opposes you");
+            }else{
+                if(senate >0){
+                    System.out.println("The Senate overwhelmingly opposes you");
+                }else{
+                    System.out.println("What have you done?");
+                }
+            }
+        }
     }
     
 	public static void main(String[] args) {
