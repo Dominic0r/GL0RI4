@@ -567,7 +567,7 @@ System.out.flush();
         System.out.println("1-Pull all the strings we got to get this on my desk.");
         System.out.println("2-Let the chips fall where they may");
         System.out.println("3-Oppose the bill to rally support");
-        System.out.println("4-Skip it, Ill pas it through an executive order");
+        System.out.println("4-Skip it, Ill pass it through an executive order");
         int ecochance1 = ra.nextInt(24);
         switch(sc.nextInt()){
             case 1: policy +=(senate >=12)? 5:0;
