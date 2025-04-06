@@ -235,8 +235,8 @@ System.out.flush();
         System.out.println("==                    GL0RI4                    ==");
         System.out.println("==================================================\n");
         
-        System.out.println("Stats: \n");
-        
+        System.out.println("Stats:");
+        //System.out.println(victory);
         if(victory>5){
             System.out.println("You have "+GREEN+"plenty"+RESET+" of victories");
         }else if(victory <=5 && victory>2){
@@ -251,7 +251,7 @@ System.out.flush();
         }
         
         
-        
+        //System.out.println(opposition);
         if(opposition>12){
                     System.out.println("The opposition is "+RED+"strong"+RESET);
                 }else if(opposition <=12 && opposition >6){
@@ -428,17 +428,17 @@ System.out.flush();
         checkLimits();
         senate -= 8;
         switch(opposition){
-            case 0: senate += 10;
+            case 0: senate += 8;
                 break;
             case 1: senate +=6;
                 break;
-            case 2: senate +=2;
+            case 2: senate +=4;
                 break;
             case 3:
                 break;
-            case 4: senate -= 2;
+            case 4: senate += 2;
                 break;
-            default: senate -= 6;
+            default: senate += 0;
         }
         senate += support/2;
         checkLimits();
@@ -530,10 +530,15 @@ System.out.flush();
         // ev 6
         System.out.println("Last year, the United States was attacked by Islamist terrorists in what is now being called the 9/11 Attacks. While we've already made a condolence message last year, we can take advantage of this by promoting our local counter-terrorism campaign to the public");
         System.out.println("1-It's best not to use this to shore up support");
-        System.out.println("2-Write me a quick speech talking about the dangers of terrorism and how we're combatting it");
+        System.out.println("2-Reaffirm our condolences and other diplomatic stuff like that.");
+        System.out.println("3-Write me a quick speech talking about the dangers of terrorism and how we're combatting it");
         switch(sc.nextInt()){
             case 1:
                 senate--;
+                break;
+            case 2:
+                victory ++;
+                senate +=1;
                 break;
             default: 
             opposition++;
@@ -699,6 +704,7 @@ System.out.flush();
             support -=2;
                 break;
             case 2:
+                victory++;
             senate -=1;
                 break;
             default: 
