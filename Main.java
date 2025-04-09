@@ -84,7 +84,7 @@ public class Main
             }
             yadd = rand.nextInt(yvot/100);
             oadd = rand.nextInt(ovot/100);
-            otadd = (rand.nextInt(otvot/100))/2;
+            otadd = rand.nextInt(otvot/100);
             
             vcount += yadd+oadd+otadd;
             ylive+= yadd;
@@ -334,7 +334,7 @@ System.out.flush();
         checkLimits();
         
         //ev 0
-		System.out.println("We've done it. We've succesfully ousted a corrupt government and installed ourselves in power. You step up on the stage and prepare to address the massive crowds that have gathered in your support");
+		System.out.println("We've done it. We've succesfully ousted Joseph Estrada and installed ourselves in power. You step up on the stage and prepare to address the massive crowds that have gathered in your support");
         System.out.println("1-It's so important that I make a unifying speech. After what we had just gone through, let's try and unite the nation");
         System.out.println("2-I'd like to thank those in congress and those in Estrada's cabinet who have been so brave to step out and come to my support.");
         System.out.println("3-Joseph Estrada led a corrupt government, one that betrayed the trust of the people. I promise to restore integrity to Malacañan");
