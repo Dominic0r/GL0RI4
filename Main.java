@@ -56,6 +56,10 @@ public class Main
     reg.add(new Region("Caraga","123"));
     reg.add(new Region("ARMM","123"));
     }
+    
+    public static ArrayList <String> wonByArroyo = new ArrayList<>();
+    public static ArrayList <String> wonByOppo = new ArrayList<>();
+    
     public static int victory = 0;
     public static int senate = 21;
     public static int opposition = 0;
@@ -120,6 +124,9 @@ public class Main
         int otherpoints = 0;
         
         for(Region r : reg){
+            youpoints = 0;
+            oppopoints = 0;
+            otherpoints = 0;
             if(checkBalwarteArroyo(r)){
                 youpoints +=25;
             }
@@ -132,10 +139,29 @@ public class Main
             oppopoints += (int) oper/2;
             otherpoints += (int) otper/2;
             
+            youpoints+= senate;
+            oppopoints += 24-senate;
+            
+            if(youpoints>= oppopoints){
+                wonByArroyo.add(r.getName());
+            }else{
+                wonByOppo.add(r.getName());
+            }
             
         }
     }
     
+    
+    public static void displayWon(){
+        System.out.println("Regions won by Gloria Macapagal Arroyo: ");
+        for(String r : wonByArroyo){
+            System.out.println(r);
+        }
+        System.out.println("\nRegions won by"+mainOpponent+": ");
+        for(String r : wonByOppo){
+            System.out.println(r);
+        }
+    }
     
     
     public static void voteCount(int yvot, int ovot, int otvot){
@@ -212,6 +238,8 @@ System.out.flush();
         } else{
             System.out.println(mainOpponent+ " Has Won!");
         }
+        regionAllocation();
+        displayWon();
         
     }
     
