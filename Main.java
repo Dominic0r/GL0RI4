@@ -5,7 +5,7 @@ import java.util.regex.*;
 
 public class Main
 {
-    class Region{
+    public static class Region{
         String name;
         String balwarte;
         int arroyo;
@@ -37,7 +37,7 @@ public class Main
        }
     }
     public static ArrayList <Region> reg = new ArrayList<>();
-    {
+    static {
     reg.add(new Region("Ilocos Region","Bongbong Marcos Chavit Singson"));
     reg.add(new Region("Cordillera AR","123"));
     reg.add(new Region("Cagayan Valley","123"));
@@ -119,11 +119,14 @@ public class Main
     }
     
     public static void regionAllocation(){
+        Random ra = new Random();
+        //System.out.println("a");
         int youpoints = 0;
         int oppopoints = 0;
         int otherpoints = 0;
         
         for(Region r : reg){
+            
             youpoints = 0;
             oppopoints = 0;
             otherpoints = 0;
@@ -135,16 +138,39 @@ public class Main
                 oppopoints +=25;
             }
             
-            youpoints += (int) yper/2;
-            oppopoints += (int) oper/2;
-            otherpoints += (int) otper/2;
+            
+                youpoints += ra.nextInt((int)yper);
+                oppopoints += ra.nextInt((int) oper);
+                otherpoints += ra.nextInt((int) otper);
+            
+            if(yper-oper > 0){
+                youpoints += ((int)yper-oper)/10;
+            }else{
+                oppopoints += ((int)oper-yper)/10;
+            }
+            
+            //System.out.println(yper);
+            //System.out.println(oper);
+            //System.out.println(otper);
+            
+            
             
             youpoints+= senate;
             oppopoints += 24-senate;
             
+            youpoints += ra.nextInt(25);
+            oppopoints += ra.nextInt(25);
+            
             if(youpoints>= oppopoints){
+                //System.out.println(r.getName()+ " to Arroyo");
+                //System.out.println(oppopoints);
+                //System.out.println(youpoints);
                 wonByArroyo.add(r.getName());
+                
             }else{
+                //System.out.println(r.getName()+ " to Opposition");
+                //System.out.println(oppopoints);
+                //System.out.println(youpoints);
                 wonByOppo.add(r.getName());
             }
             
@@ -153,11 +179,11 @@ public class Main
     
     
     public static void displayWon(){
-        System.out.println("Regions won by Gloria Macapagal Arroyo: ");
+        System.out.println("\nRegions won by Gloria Macapagal Arroyo: ");
         for(String r : wonByArroyo){
             System.out.println(r);
         }
-        System.out.println("\nRegions won by"+mainOpponent+": ");
+        System.out.println("\nRegions won by "+mainOpponent+": ");
         for(String r : wonByOppo){
             System.out.println(r);
         }
@@ -207,14 +233,14 @@ public class Main
             ylive+= yadd;
             olive += oadd;
             otlive+= otadd;
-            try 
+            /*try 
 {
     Thread.sleep(500);
 } 
 catch(InterruptedException e)
 {
      System.out.println(e);
-}
+}*/
             System.out.print("\033[H\033[2J");  
 System.out.flush();  
         }
@@ -238,7 +264,9 @@ System.out.flush();
         } else{
             System.out.println(mainOpponent+ " Has Won!");
         }
+        //System.out.println("a");
         regionAllocation();
+        //System.out.println("a");
         displayWon();
         
     }
