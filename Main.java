@@ -11,10 +11,6 @@ public class Main
         int arroyo;
         int unity;
         
-        
-        int yourlvote;
-        int oppovote;
-        
        public Region(String name, String balwarte){
            Random ra = new Random();
            
@@ -25,7 +21,7 @@ public class Main
        }
        
        public void changeApproval(int arroyo){
-           this.arroyo = arroyol
+           this.arroyo = arroyo;
        }
        
        public void changeUnity(int unity){
@@ -35,27 +31,31 @@ public class Main
        public String giveRegBalwarte(){
            return this.balwarte;
        }
-        
+       
+       public String getName(){
+           return this.name;
+       }
     }
-    ArrayList <Region> reg = new ArrayList<>();
+    public static ArrayList <Region> reg = new ArrayList<>();
+    {
     reg.add(new Region("Ilocos Region","Bongbong Marcos Chavit Singson"));
-    reg.add(new Region("Cordillera AR",""));
-    reg.add(new Region("Cagayan Valley",""));
+    reg.add(new Region("Cordillera AR","123"));
+    reg.add(new Region("Cagayan Valley","123"));
     reg.add(new Region("Central Luzon","Richard Gordon Gloria Macapagal Arroyo"));
     reg.add(new Region("National Capital Region","Fernando Poe Jr."));
     reg.add(new Region("Calabarzon","Ping Lacson"));
-    reg.add(new Region("Mimaropa",""));
+    reg.add(new Region("Mimaropa","123"));
     reg.add(new Region("Bicol Region","Eddie Gil Raul Roco"));
     reg.add(new Region("Western Visayas","Miriam Defensor Santiago"));
-    reg.add(new Region("Central Visayas",""));
-    reg.add(new Region("Eastern Visayas",""));
-    reg.add(new Region("Zamboanga Peninsula",""));
-    reg.add(new Region("Northern Mindanao",""));
+    reg.add(new Region("Central Visayas","123"));
+    reg.add(new Region("Eastern Visayas","123"));
+    reg.add(new Region("Zamboanga Peninsula","123"));
+    reg.add(new Region("Northern Mindanao","123"));
     reg.add(new Region("Davao Region","Rodrigo Duterte"));
-    reg.add(new Region("Soccksargen",""));
-    reg.add(new Region("Caraga",""));
-    reg.add(new Region("ARMM",""));
-    
+    reg.add(new Region("Soccksargen","123"));
+    reg.add(new Region("Caraga","123"));
+    reg.add(new Region("ARMM","123"));
+    }
     public static int victory = 0;
     public static int senate = 21;
     public static int opposition = 0;
@@ -87,6 +87,8 @@ public class Main
     
     public static int opscore=0, yourscore=0, otherscore=0;
     
+    public static double yper = 0, oper = 0, otper = 0;
+    
     public static boolean isElection = false;
     
     public static String[] vps = {"De Castro", "Villar", "Zubiri"};
@@ -100,6 +102,41 @@ public class Main
     }
     
     
+    public static boolean checkBalwarteArroyo(Region r){
+        Pattern checkArroyo = Pattern.compile("Gloria Macapagal Arroyo");
+        Matcher regBalwa = checkArroyo.matcher(r.giveRegBalwarte());
+        return regBalwa.find();
+    }
+    
+    public static boolean checkBalwarteOppo(Region r){
+        Pattern checkOppo = Pattern.compile(mainOpponent);
+        Matcher regBalwa = checkOppo.matcher(r.giveRegBalwarte());
+        return regBalwa.find();
+    }
+    
+    public static void regionAllocation(){
+        int youpoints = 0;
+        int oppopoints = 0;
+        int otherpoints = 0;
+        
+        for(Region r : reg){
+            if(checkBalwarteArroyo(r)){
+                youpoints +=25;
+            }
+            
+            if(checkBalwarteOppo(r)){
+                oppopoints +=25;
+            }
+            
+            youpoints += (int) yper/2;
+            oppopoints += (int) oper/2;
+            otherpoints += (int) otper/2;
+            
+            
+        }
+    }
+    
+    
     
     public static void voteCount(int yvot, int ovot, int otvot){
         Random rand = new Random();
@@ -108,7 +145,7 @@ public class Main
         int yadd=0, oadd=0, otadd=0;
         int totvot = yvot+ovot+otvot;
         int vcount = 0;
-        double yper = 0, oper = 0, otper = 0;
+        
         int dfrnc = 0;
         double pdif = 0;
         while(vcount<totvot){
