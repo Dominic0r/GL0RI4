@@ -1,9 +1,61 @@
 import java.util.*;
 import java.text.DecimalFormat;
 import java.util.concurrent.TimeUnit;
+import java.util.regex.*;
 
 public class Main
 {
+    class Region{
+        String name;
+        String balwarte;
+        int arroyo;
+        int unity;
+        
+        
+        int yourlvote;
+        int oppovote;
+        
+       public Region(String name, String balwarte){
+           Random ra = new Random();
+           
+           this.name = name;
+           this.balwarte = balwarte;
+           this.arroyo = 0;
+           this. unity = 0;
+       }
+       
+       public void changeApproval(int arroyo){
+           this.arroyo = arroyol
+       }
+       
+       public void changeUnity(int unity){
+           this.unity = unity;
+       }
+       
+       public String giveRegBalwarte(){
+           return this.balwarte;
+       }
+        
+    }
+    ArrayList <Region> reg = new ArrayList<>();
+    reg.add(new Region("Ilocos Region","Bongbong Marcos Chavit Singson"));
+    reg.add(new Region("Cordillera AR",""));
+    reg.add(new Region("Cagayan Valley",""));
+    reg.add(new Region("Central Luzon","Richard Gordon Gloria Macapagal Arroyo"));
+    reg.add(new Region("National Capital Region","Fernando Poe Jr."));
+    reg.add(new Region("Calabarzon","Ping Lacson"));
+    reg.add(new Region("Mimaropa",""));
+    reg.add(new Region("Bicol Region","Eddie Gil Raul Roco"));
+    reg.add(new Region("Western Visayas","Miriam Defensor Santiago"));
+    reg.add(new Region("Central Visayas",""));
+    reg.add(new Region("Eastern Visayas",""));
+    reg.add(new Region("Zamboanga Peninsula",""));
+    reg.add(new Region("Northern Mindanao",""));
+    reg.add(new Region("Davao Region","Rodrigo Duterte"));
+    reg.add(new Region("Soccksargen",""));
+    reg.add(new Region("Caraga",""));
+    reg.add(new Region("ARMM",""));
+    
     public static int victory = 0;
     public static int senate = 21;
     public static int opposition = 0;
@@ -46,6 +98,8 @@ public class Main
             System.out.println(mainOpponent+ " Has Won!");
         }
     }
+    
+    
     
     public static void voteCount(int yvot, int ovot, int otvot){
         Random rand = new Random();
@@ -232,7 +286,7 @@ System.out.flush();
         }
         
         System.out.println("==================================================");
-        System.out.println("==                    GL0RI4                    ==");
+        System.out.println("==                      GM4                     ==");
         System.out.println("==================================================\n");
         
         System.out.println("Stats:");
@@ -325,8 +379,8 @@ System.out.flush();
 	    Scanner sc = new Scanner(System.in);
 		int uput = 0;
 		// ev -1
-		System.out.println("\n==================================================");
-        System.out.println("==                    GL0RI4                    ==");
+		System.out.println("==================================================");
+        System.out.println("==                      GM4                     ==");
         System.out.println("==================================================\n");
         System.out.println("Press Enter to Start");
         Scanner strt = new Scanner(System.in);
